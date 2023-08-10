@@ -18,14 +18,14 @@ class MyApp extends StatelessWidget {
           height: double.infinity,
           decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("images/wp2918021.jpg"),
+                  image: AssetImage("assets/images/wp2918021.jpg"),
                   fit: BoxFit.cover)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image(image: AssetImage("images/R.png")),
-              Text(
+              const Image(image: AssetImage("assets/images/R.png")),
+              const Text(
                 "ITI Quiz App",
                 style: TextStyle(
                   color: Color.fromARGB(239, 233, 218, 84),
@@ -35,13 +35,14 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'DancingScript',
                 ),
               ),
-              SizedBox(height: 150),
+              const SizedBox(height: 150),
               ElevatedButton(
                   onPressed: () {},
-                  child: Text("Start", style: TextStyle(fontSize: 30)),
+                  child: const Text("Start", style: TextStyle(fontSize: 30)),
                   style: ElevatedButton.styleFrom(
-                      fixedSize: Size(300, 50),
-                      backgroundColor: Color.fromARGB(255, 144, 140, 99))),
+                      fixedSize: const Size(300, 50),
+                      backgroundColor:
+                          const Color.fromARGB(255, 144, 140, 99))),
             ],
           ),
         ),
