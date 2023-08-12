@@ -26,7 +26,7 @@ class _loginScreenState extends State<loginScreen> {
               Image.asset(
                 "assets/images/pp.png",
                 height: MediaQuery.of(context).size.height * 0.1,
-                width: MediaQuery.of(context).size.height * 0.5,
+                width: MediaQuery.of(context).size.width * 0.5,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.1,
@@ -80,7 +80,8 @@ class _loginScreenState extends State<loginScreen> {
                           fixedSize: const Size(130, 30),
                           backgroundColor:
                               const Color.fromARGB(255, 126, 123, 160),
-                          shape: const StadiumBorder()),
+                          shape: const StadiumBorder(),
+                          elevation: 10),
                     ),
                     const SizedBox(
                       width: 20,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
+import 'package:flutter_application_1/screens/loginScreen.dart';
 
 class openingScreen extends StatelessWidget {
   const openingScreen({super.key});
@@ -10,13 +11,14 @@ class openingScreen extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
         body: Container(
           width: double.infinity,
           height: double.infinity,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/wp2918021.jpg"),
-                  fit: BoxFit.cover)),
+          //decoration: const BoxDecoration(
+          // image: DecorationImage(
+          //   image: AssetImage("assets/images/wp2918021.jpg"),
+          // fit: BoxFit.cover)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +27,7 @@ class openingScreen extends StatelessWidget {
               const Text(
                 "ITI Quiz App",
                 style: TextStyle(
-                  color: Color.fromARGB(239, 233, 218, 84),
+                  color: Color.fromARGB(255, 126, 123, 160),
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 2,
@@ -34,12 +36,19 @@ class openingScreen extends StatelessWidget {
               ),
               const SizedBox(height: 150),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => const loginScreen(),
+                      ),
+                    );
+                  },
                   child: const Text("Start", style: TextStyle(fontSize: 30)),
                   style: ElevatedButton.styleFrom(
-                      fixedSize: const Size(300, 50),
-                      backgroundColor:
-                          const Color.fromARGB(255, 144, 140, 99))),
+                    fixedSize: const Size(300, 50),
+                    backgroundColor: const Color.fromARGB(255, 126, 123, 160),
+                  )),
             ],
           ),
         ),
