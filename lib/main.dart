@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screens/quizScreen.dart';
+import 'package:flutter_application_1/screens/resultScreen.dart';
 
 import 'Screens/loginScreen.dart';
 import 'Screens/openingScreen.dart';

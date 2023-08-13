@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/examScreen.dart';
 import 'package:flutter_application_1/main.dart';
 
 class loginScreen extends StatefulWidget {
@@ -74,7 +75,14 @@ class _loginScreenState extends State<loginScreen> {
                       ],
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) => examScreen(),
+                          ),
+                        );
+                      },
                       child: const Text('login'),
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(130, 30),
