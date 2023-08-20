@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/datamap.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/screens/quizScreen.dart';
 
 class examScreen extends StatelessWidget {
-  examScreen({super.key});
+  // final int index;
+  // examScreen(
+  //     { //super.key
+  //     required this.index});
+
   List quizName = [
     "Sport test",
     "History test",
     "Geography test",
-    "Biology tet",
+    "Biology test",
     "Physics test"
   ];
 
@@ -22,10 +27,12 @@ class examScreen extends StatelessWidget {
             margin: const EdgeInsets.all(50),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => quizScreen(),
+                    builder: (BuildContext context) => quizScreen(
+                      categoryMap: database[i],
+                    ),
                   ),
                 );
               },

@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_application_1/Screens/examScreen.dart';
+import 'dart:ui';
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:flutter_application_1/main.dart';
+
+import '../datamap.dart';
 
 class loginScreen extends StatefulWidget {
   loginScreen({super.key});
@@ -14,16 +18,50 @@ class _loginScreenState extends State<loginScreen> {
   bool checkboxvalue = false;
   final _formfield = GlobalKey<FormState>();
   final _emailcontroller = TextEditingController();
-  final _usernamecontroller = TextEditingController();
   final _passcontroller = TextEditingController();
 
   bool passToggle = false;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return WillPopScope(
+      onWillPop: () async {
+        final value = await showDialog<bool>(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: const Text("Alert"),
+                content: const Text("do you want to exit?"),
+                actions: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 126, 123, 160),
+                        shape: const StadiumBorder(),
+                        elevation: 10),
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: const Text("no"),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 126, 123, 160),
+                        shape: const StadiumBorder(),
+                        elevation: 10),
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: const Text("exit"),
+                  ),
+                ],
+              );
+            });
+        if (value != null) {
+          return Future.value(value);
+        } else {
+          return Future.value(false);
+        }
+      },
+      //  debugShowCheckedModeBanner: false,
+      child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 126, 123, 160),
         body: Container(
           child: Column(
@@ -62,11 +100,11 @@ class _loginScreenState extends State<loginScreen> {
                                   letterSpacing: 2,
                                   fontFamily: 'DancingScript')),
                           TextFormField(
-                            controller: _usernamecontroller,
+                            controller: usernameControl,
                             inputFormatters: <TextInputFormatter>[
                               UpperCaseTextFormatter()
                             ],
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                                 prefixIcon: Icon(Icons.person_2_rounded),
                                 hintText: "Enter Username Here",
                                 labelText: "Username"),
@@ -74,7 +112,7 @@ class _loginScreenState extends State<loginScreen> {
                               if (value!.isEmpty) {
                                 return "the username is empty";
                               }
-                              if (_usernamecontroller.text.length < 8) {
+                              if (usernameControl.text.length < 8) {
                                 return "the username should be more than 8 characters";
                               }
                             },
@@ -84,7 +122,7 @@ class _loginScreenState extends State<loginScreen> {
                             controller: _passcontroller,
                             obscureText: passToggle,
                             decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.lock),
+                              prefixIcon: const Icon(Icons.lock),
                               hintText: "Enter password Here",
                               labelText: "Password",
                               suffixIcon: InkWell(
@@ -108,7 +146,7 @@ class _loginScreenState extends State<loginScreen> {
                             //obscureText: true,
                             keyboardType: TextInputType.emailAddress,
                             controller: _emailcontroller,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.email),
                               hintText: "Enter Your E-mail Here",
                               labelText: "E-mail",
@@ -141,7 +179,7 @@ class _loginScreenState extends State<loginScreen> {
                             onPressed: () {
                               if (_formfield.currentState!.validate()) {
                                 _emailcontroller.clear();
-                                _usernamecontroller.clear();
+                                usernameControl.clear();
                                 _passcontroller.clear();
 
                                 Navigator.push(
@@ -182,8 +220,8 @@ class _loginScreenState extends State<loginScreen> {
                                       checkboxvalue = newValue!;
                                     });
                                   }),
-                              Text("Remember me"),
-                              Spacer(
+                              const Text("Remember me"),
+                              const Spacer(
                                 flex: 6,
                               ),
                               TextButton(

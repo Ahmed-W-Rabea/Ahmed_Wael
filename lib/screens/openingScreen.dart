@@ -36,19 +36,21 @@ class openingScreen extends StatelessWidget {
               ),
               const SizedBox(height: 150),
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => loginScreen(),
-                      ),
-                    );
-                  },
-                  child: const Text("Start", style: TextStyle(fontSize: 30)),
-                  style: ElevatedButton.styleFrom(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (BuildContext context) => loginScreen(),
+                    ),
+                  );
+                },
+                child: const Text("Start", style: TextStyle(fontSize: 30)),
+                style: ElevatedButton.styleFrom(
                     fixedSize: const Size(300, 50),
                     backgroundColor: const Color.fromARGB(255, 126, 123, 160),
-                  )),
+                    shape: const StadiumBorder(),
+                    elevation: 10),
+              ),
             ],
           ),
         ),
